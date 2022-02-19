@@ -5,7 +5,6 @@ const Upload = () => {
     const [error, setError] = useState(null);
     const allowedTypes = ['image/png', 'image/jpg', 'image/jpeg'];
     const OnfileUpload = (e) => {
-        console.log(e)
         const Selectedfile = e.target.files[0];
         if(allowedTypes.includes(Selectedfile.type)) {
             setFileName(Selectedfile);
@@ -15,11 +14,9 @@ const Upload = () => {
             setFileName(null);
             setError('File type is not valid')
         }
-        
-        console.log('Changed');
     }
     return (
-        <form>
+        <div>
             <label>
             <input type="file" onChange={OnfileUpload}></input>
             <span>+</span>
@@ -30,7 +27,7 @@ const Upload = () => {
               {error && <div className="error">{error}</div>}
               {file && <ProgressBar file={file} setFile= {setFileName}></ProgressBar>}
             </div>
-        </form>
+        </div>
     )
 }
 
